@@ -1647,7 +1647,6 @@
         player.i.infinitydim4mult = new Decimal(1)
 
         player.i.singularitytime = new Decimal(0)
-        player.i.singularities = player.i.singularities.add(player.i.singularitiestoget)
         player.i.singularitypoints = player.i.singularitypoints.add(player.i.singularitypointstoget)
 
         player.i.singularitypower = new Decimal(0)
