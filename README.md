@@ -6,4 +6,4 @@ An incremental game engine based on The Prestige Tree. It still requires program
 
 You can look in the [documentation](docs/!general-info.md) for more information on how it all works, or look at the code in layers.js to see what it all looks like.
 
-Discord: https://discord.gg/DubGsHrbs2
+Incremental God Tree Discord: https://discord.gg/DubGsHrbs2
