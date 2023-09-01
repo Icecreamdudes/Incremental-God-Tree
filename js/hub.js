@@ -37,6 +37,9 @@
             aarexianenergy: new Decimal(0),
             aarexianenergytoget: new Decimal(0),
             aarexianenergyeffect: new Decimal(1),
+            //jacorb shrines
+            jacorbshrinepower: new Decimal(0),
+            jacorbshrinepowereffect: new Decimal(1),
         }
     },
     automate() {
@@ -570,6 +573,159 @@
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
             },
         },
+        36: {
+            cost(x) { return new Decimal(1.5).pow(x || getBuyableAmount(this.layer, this.id)).mul(5000) },
+            effect(x) { return new getBuyableAmount(this.layer, this.id).mul(0.6).add(1) },
+            unlocked() { return hasUpgrade("i", 168) },
+            canAfford() { return player.h.aarexianenergy.gte(this.cost()) },
+            title() {
+                return format(getBuyableAmount(this.layer, this.id), 0) + "<br/> Shrine of Cante"
+            },
+            display() {
+                return "which are boosting cantecanti fragment gain by x" + format(tmp[this.layer].buyables[this.id].effect) + ".\n\
+                    Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Aarexian Energy"
+            },
+            buy() {
+                let base = new Decimal(5000)
+                let growth = 1.5
+                let max = Decimal.affordGeometricSeries(player.h.aarexianenergy, base, growth, getBuyableAmount(this.layer, this.id))
+                let cost = Decimal.sumGeometricSeries(max, base, growth, getBuyableAmount(this.layer, this.id))
+                player.h.aarexianenergy = player.h.aarexianenergy.sub(cost)
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
+            },
+        },
+        37: {
+            cost(x) { return new Decimal(1.2).pow(x || getBuyableAmount(this.layer, this.id)).mul(0.2) },
+            effect(x) { return new getBuyableAmount(this.layer, this.id).add(1) },
+            unlocked() { return hasUpgrade("h", 34) },
+            canAfford() { return player.j.jacorbtokens.gte(this.cost()) },
+            title() {
+                return format(getBuyableAmount(this.layer, this.id), 0) + "<br/> Shrine of Willpower"
+            },
+            display() {
+                return "which are boosting willpower gain by x" + format(tmp[this.layer].buyables[this.id].effect) + ".\n\
+                    Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Jacorb Tokens"
+            },
+            buy() {
+                let base = new Decimal(0.2)
+                let growth = 1.2
+                let max = Decimal.affordGeometricSeries(player.j.jacorbtokens, base, growth, getBuyableAmount(this.layer, this.id))
+                let cost = Decimal.sumGeometricSeries(max, base, growth, getBuyableAmount(this.layer, this.id))
+                player.j.jacorbtokens = player.j.jacorbtokens.sub(cost)
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
+            },
+            style: { "background-color": "purple", }
+        },
+        38: {
+            cost(x) { return new Decimal(1.3).pow(x || getBuyableAmount(this.layer, this.id)).mul(0.3) },
+            effect(x) { return new getBuyableAmount(this.layer, this.id).mul(0.5).add(1) },
+            unlocked() { return hasUpgrade("h", 34) },
+            canAfford() { return player.j.jacorbtokens.gte(this.cost()) },
+            title() {
+                return format(getBuyableAmount(this.layer, this.id), 0) + "<br/> Shrine of Prestige Power"
+            },
+            display() {
+                return "which are boosting prestige power gain by x" + format(tmp[this.layer].buyables[this.id].effect) + ".\n\
+                    Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Jacorb Tokens"
+            },
+            buy() {
+                let base = new Decimal(0.3)
+                let growth = 1.3
+                let max = Decimal.affordGeometricSeries(player.j.jacorbtokens, base, growth, getBuyableAmount(this.layer, this.id))
+                let cost = Decimal.sumGeometricSeries(max, base, growth, getBuyableAmount(this.layer, this.id))
+                player.j.jacorbtokens = player.j.jacorbtokens.sub(cost)
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
+            },
+            style: { "background-color": "purple", }
+        },
+        39: {
+            cost(x) { return new Decimal(1.4).pow(x || getBuyableAmount(this.layer, this.id)).mul(0.5) },
+            effect(x) { return new getBuyableAmount(this.layer, this.id).mul(0.6).add(1) },
+            unlocked() { return hasUpgrade("h", 34) },
+            canAfford() { return player.j.jacorbtokens.gte(this.cost()) },
+            title() {
+                return format(getBuyableAmount(this.layer, this.id), 0) + "<br/> Shrine of Assembly"
+            },
+            display() {
+                return "which are boosting assembly line speed by x" + format(tmp[this.layer].buyables[this.id].effect) + ".\n\
+                    Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Jacorb Tokens"
+            },
+            buy() {
+                let base = new Decimal(0.5)
+                let growth = 1.4
+                let max = Decimal.affordGeometricSeries(player.j.jacorbtokens, base, growth, getBuyableAmount(this.layer, this.id))
+                let cost = Decimal.sumGeometricSeries(max, base, growth, getBuyableAmount(this.layer, this.id))
+                player.j.jacorbtokens = player.j.jacorbtokens.sub(cost)
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
+            },
+            style: { "background-color": "purple", }
+        },
+        41: {
+            cost(x) { return new Decimal(1.5).pow(x || getBuyableAmount(this.layer, this.id)).mul(0.8) },
+            effect(x) { return new getBuyableAmount(this.layer, this.id).mul(0.4).add(1) },
+            unlocked() { return hasUpgrade("h", 34) },
+            canAfford() { return player.j.jacorbtokens.gte(this.cost()) },
+            title() {
+                return format(getBuyableAmount(this.layer, this.id), 0) + "<br/> Shrine of Lost Friendship"
+            },
+            display() {
+                return "which are boosting aarexian energy by x" + format(tmp[this.layer].buyables[this.id].effect) + ".\n\
+                    Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Jacorb Tokens"
+            },
+            buy() {
+                let base = new Decimal(0.8)
+                let growth = 1.5
+                let max = Decimal.affordGeometricSeries(player.j.jacorbtokens, base, growth, getBuyableAmount(this.layer, this.id))
+                let cost = Decimal.sumGeometricSeries(max, base, growth, getBuyableAmount(this.layer, this.id))
+                player.j.jacorbtokens = player.j.jacorbtokens.sub(cost)
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
+            },
+            style: { "background-color": "purple", }
+        },
+        42: {
+            cost(x) { return new Decimal(1.6).pow(x || getBuyableAmount(this.layer, this.id)).mul(1.2) },
+            effect(x) { return new getBuyableAmount(this.layer, this.id).pow(1.1).add(1) },
+            unlocked() { return hasUpgrade("h", 34) },
+            canAfford() { return player.j.jacorbtokens.gte(this.cost()) },
+            title() {
+                return format(getBuyableAmount(this.layer, this.id), 0) + "<br/> Shrine of My Creations"
+            },
+            display() {
+                return "which are boosting jacorb mods by x" + format(tmp[this.layer].buyables[this.id].effect) + ".\n\
+                    Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Jacorb Tokens"
+            },
+            buy() {
+                let base = new Decimal(1.2)
+                let growth = 1.6
+                let max = Decimal.affordGeometricSeries(player.j.jacorbtokens, base, growth, getBuyableAmount(this.layer, this.id))
+                let cost = Decimal.sumGeometricSeries(max, base, growth, getBuyableAmount(this.layer, this.id))
+                player.j.jacorbtokens = player.j.jacorbtokens.sub(cost)
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
+            },
+            style: { "background-color": "purple", }
+        },
+        43: {
+            cost(x) { return new Decimal(2).pow(x || getBuyableAmount(this.layer, this.id)).mul(2.5) },
+            effect(x) { return new getBuyableAmount(this.layer, this.id).mul(0.2).add(1) },
+            unlocked() { return hasUpgrade("h", 34) },
+            canAfford() { return player.j.jacorbtokens.gte(this.cost()) },
+            title() {
+                return format(getBuyableAmount(this.layer, this.id), 0) + "<br/> Shrine of Myself"
+            },
+            display() {
+                return "which are boosting jacorb tokens from all sources by x" + format(tmp[this.layer].buyables[this.id].effect) + ".\n\
+                    Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Jacorb Tokens"
+            },
+            buy() {
+                let base = new Decimal(2.5)
+                let growth = 2
+                let max = Decimal.affordGeometricSeries(player.j.jacorbtokens, base, growth, getBuyableAmount(this.layer, this.id))
+                let cost = Decimal.sumGeometricSeries(max, base, growth, getBuyableAmount(this.layer, this.id))
+                player.j.jacorbtokens = player.j.jacorbtokens.sub(cost)
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(max))
+            },
+            style: { "background-color": "purple", }
+        },
     },
     upgrades: {
         11:
@@ -796,6 +952,16 @@
             currencyDisplayName: "Prestige Power",
             currencyInternalName: "prestigepower",
         },
+        34:
+        {
+            title: "Jacorb's Blessing",
+            description: "Unlocks jacorbian shrines.",
+            unlocked() { return hasUpgrade("h", 33) },
+            cost: new Decimal(200000000),
+            currencyLocation() { return player.h },
+            currencyDisplayName: "Prestige Power",
+            currencyInternalName: "prestigepower",
+        },
     },
     clickables: {
         11: {
@@ -1000,13 +1166,14 @@
         player.h.willpowerpersecond = player.h.willpowerpersecond.mul(player.h.prestigepowereffect2)
         player.h.willpowerpersecond = player.h.willpowerpersecond.mul(player.a.achievementpointseffect)
         player.h.willpowerpersecond = player.h.willpowerpersecond.mul(buyableEffect("h", 19))
+        player.h.willpowerpersecond = player.h.willpowerpersecond.mul(buyableEffect("h", 37))
 
         player.h.willpower = player.h.willpower.add(player.h.willpowerpersecond.mul(delta))
         player.h.willpowereffect = player.h.willpower.plus(1).log10().pow(0.2)
         player.h.prestigepowereffect = player.h.prestigepower.plus(1).log10().pow(0.22)
         player.h.potential = player.h.willpowereffect.add(player.h.prestigepowereffect)
 
-        player.h.shrinepower = player.h.buyables[12].add(player.h.buyables[13].add(player.h.buyables[14].add(player.h.buyables[15].add(player.h.buyables[17].add(player.h.buyables[23].mul(2).add(player.h.buyables[24].mul(2).add(player.h.buyables[25].mul(2).add(player.h.buyables[26].mul(2).add(player.h.buyables[27].mul(2).add(player.h.buyables[28].mul(2).add(player.h.buyables[29].mul(2).add(player.h.buyables[31].mul(2).add(player.h.buyables[32].mul(5)).add(player.h.buyables[33].mul(5).add(player.h.buyables[34].mul(5).add(player.h.buyables[35].mul(5))))))))))))))))
+        player.h.shrinepower = player.h.buyables[12].add(player.h.buyables[13].add(player.h.buyables[14].add(player.h.buyables[15].add(player.h.buyables[17].add(player.h.buyables[23].mul(2).add(player.h.buyables[24].mul(2).add(player.h.buyables[25].mul(2).add(player.h.buyables[26].mul(2).add(player.h.buyables[27].mul(2).add(player.h.buyables[28].mul(2).add(player.h.buyables[29].mul(2).add(player.h.buyables[31].mul(2).add(player.h.buyables[32].mul(5)).add(player.h.buyables[33].mul(5).add(player.h.buyables[34].mul(5).add(player.h.buyables[35].mul(5).add(player.h.buyables[36].mul(5)))))))))))))))))
         player.h.shrinepower = player.h.shrinepower.mul(buyableEffect("h", 22))
         player.h.shrinepowereffect = player.h.shrinepower.add(1).pow(0.5)
 
@@ -1023,6 +1190,7 @@
         //prestigepower
         player.h.prestigepowertoget = player.h.willpower.div(10000).pow(0.2).floor()
         player.h.prestigepowertoget = player.h.prestigepowertoget.mul(buyableEffect("h", 21))
+        player.h.prestigepowertoget = player.h.prestigepowertoget.mul(buyableEffect("h", 38))
         player.h.prestigepowereffect2 = player.h.prestigepower.pow(0.6).add(1)
 
         if (hasMilestone("h", 11)) player.h.prestigepower = player.h.prestigepower.add(player.h.prestigepowertoget.mul(0.5).mul(delta))
@@ -1058,6 +1226,7 @@
         let assemblylinespeed = new Decimal(1)
 
         assemblylinespeed = assemblylinespeed.mul(player.h.aarexianenergyeffect)
+        assemblylinespeed = assemblylinespeed.mul(buyableEffect("h", 39))
 
         redenergypersecond = redenergypersecond.mul(assemblylinespeed)
         greenenergypersecond = greenenergypersecond.mul(assemblylinespeed)
@@ -1382,10 +1551,17 @@
         let totalenergy = new Decimal(0)
         totalenergy = player.h.redenergy.add(player.h.greenenergy.add(player.h.blueenergy))
         player.h.aarexianenergytoget = totalenergy.pow(0.2)
+        player.h.aarexianenergytoget = player.h.aarexianenergytoget.mul(buyableEffect("h", 41))
 
         player.h.aarexianenergyeffect = player.h.aarexianenergy.pow(0.8).add(1)
 
         if (hasUpgrade("h", 33)) player.h.aarexianenergy = player.h.aarexianenergy.add(player.h.aarexianenergytoget.mul(delta))
+
+        //jacorb shrine
+
+        player.h.jacorbshrinepowereffect = player.h.jacorbshrinepower.mul(0.01).pow(0.8).add(1)
+
+        player.h.jacorbshrinepower = player.h.buyables[37].add(player.h.buyables[38].add(player.h.buyables[39].add(player.h.buyables[41].add(player.h.buyables[42].add(player.h.buyables[43])))))
     },
     milestones: {
         11: {
@@ -1824,6 +2000,43 @@
                     ]
 
             },
+            "Distance Incremental": {
+                unlocked() { return hasUpgrade("i", 172) },
+                buttonStyle() { return { 'color': '#68e8f4' } },
+                content:
+                    [
+                        ["blank", "25px"],
+                        ["raw-html", function () { return '<h3>"There once was a boy who ran far, far away.' }],
+                        ["raw-html", function () { return '<h3>He gained power, and strength along the way.' }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return '<h3>When the boy returned, he was more than a man.' }],
+                        ["raw-html", function () { return '<h3>He was a high god. And if he wants to ascend higher, he can."' }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return "<h3>Even before the times of the nobles, the power of incremental still existed in the multiverse." }],
+                        ["raw-html", function () { return "<h3>All paths still existed, but functioned in different ways." }],
+                        ["raw-html", function () { return "<h3>People still used the power to do many things." }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return "<h3>In a region of the dimensional realm, six beings collaborated and studied this power." }],
+                        ["raw-html", function () { return "<h3>They discovered many things. The power of infinity, eternity. Even reality." }],
+                        ["raw-html", function () { return "<h3>They experimented and experimented. Eventually, they harnessed the great power and became high gods." }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return "<h3>Infinity, Eternity, Reality, Spaceon, Solaris, Drigganiz." }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return "<h3>They laid dormant, until they found a being worthy of true high god power." }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return "<h3>One day, a young Jacorb encountered them." }],
+                        ["raw-html", function () { return "<h3>He was on a very long journey across the dimensional realm." }],
+                        ["raw-html", function () { return "<h3>He showed great power in bending the laws of physics, which impressed the high gods." }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return "<h3>They turned him into a god on Jacorb's tenth infinity." }],
+                        ["raw-html", function () { return "<h3>He kept on going and never stopped. He became an incremental noble after he got softcapped." }],
+                        ["blank", "25px"],
+                        ["raw-html", function () { return "<h3>Now, the high gods seemingly vanished. You must find them to free Jacorb from exile." }],
+                        ["raw-html", function () { return "<h3>They need your help. Jacorb needs your help." }],
+                        ["raw-html", function () { return "<h3>Do the right thing, okay?" }],
+                    ]
+
+            },
         },
         chapter1shrines:
         {
@@ -1864,8 +2077,23 @@
                         ["raw-html", function () { return "You have " + format(player.h.shrinepower) + " shrine power." }, { "color": "white", "font-size": "24px", "font-family": "monospace" }],
                         ["raw-html", function () { return "<h2>Your shrine power give a x" + format(player.h.shrinepowereffect) + "<h2> boost to willpower gain. " }],
                         ["row", [["buyable", 32], ["buyable", 33], ["buyable", 34], ["buyable", 35]]],
+                        ["row", [["buyable", 36]]],
                         ["blank", "25px"],
                         ["raw-html", function () { return "<h3>These are worth x5 shrine power.</h3>" }],
+                    ]
+
+            },
+            "Jacorbian": {
+                unlocked() { return hasUpgrade("h", 34) },
+                buttonStyle() { return { 'color': 'purple' } },
+                content:
+                    [
+                        ["raw-html", function () { return "You have " + format(player.j.jacorbtokens) + " jacorb tokens." }, { "color": "purple", "font-size": "24px", "font-family": "monospace" }],
+                        ["raw-html", function () { return "You have " + format(player.h.jacorbshrinepower) + " jacorbian shrine power." }, { "color": "purple", "font-size": "24px", "font-family": "monospace" }],
+                        ["raw-html", function () { return "Your jacorbian shrine power give a x" + format(player.h.jacorbshrinepowereffect) + " boost to jacorb token gain. " }, { "color": "purple", "font-size": "24px", "font-family": "monospace" }],
+                        ["blank", "25px"],
+                        ["row", [["buyable", 37], ["buyable", 38], ["buyable", 39], ["buyable", 41]]],
+                        ["row", [["buyable", 42], ["buyable", 43]]],
                     ]
 
             },

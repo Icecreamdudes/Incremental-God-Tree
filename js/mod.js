@@ -3,7 +3,7 @@
 	id: "godtree",
 	author: "Icecreamdude",
 	pointsName: "points",
-	modFiles: ["incremental.js", "cutscene.js", "achievements.js", "tree.js", "hub.js", "hub.js"],
+	modFiles: ["incremental.js", "cutscene.js", "achievements.js", "tree.js", "hub.js", "jacorbshop.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -104,7 +104,7 @@ function getPointGen() {
 	gain = gain.mul(player.i.codeexperienceeffect)
 	gain = gain.mul(player.i.preinfinityresourcemult)
 	if (hasUpgrade("i", 55) && !inChallenge("i", 24)) gain = gain.mul(upgradeEffect("i", 55))
-	if (inChallenge("i", 17)) gain = gain.div(player.i.trees.pow(0.5 ).add(1))
+	if (inChallenge("i", 17)) gain = gain.div(player.i.trees.pow(0.5).add(1))
 	player.gain = gain
 	return gain
 }

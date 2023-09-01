@@ -1,0 +1,39 @@
+.cante-animation {
+    color: blue;
+    font-size: 300px;
+    font-family: serif;
+    position: relative;
+    animation-name: move;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes move {
+    from {
+        left: -300px;
+    }
+
+    to {
+        left: 300px;
+    }
+}
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(128,0,128,0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 0 20px rgba(128,0,128,0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(128,0,128,0.5);
+    }
+}
+.remnanttext {
+    color: #B341E0;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 0 0 10px #B341E0, 0 0 20px #B341E0, 0 0 30px #B341E0, 0 0 40px #B341E0, 0 0 70px #B341E0, 0 0 80px #B341E0, 0 0 100px #B341E0, 0 0 150px #B341E0;
+}

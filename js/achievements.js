@@ -603,6 +603,30 @@
             tooltip: "Get 65 singularity energy.", // Shows when achievement is not completed
             onComplete() { player.a.achievementpower = player.a.achievementpower.add(0.5) },
         },
+        111: {
+            name: "Cante Touch This",
+            done() { return player.i.cantecantimods.gte("2") },
+            tooltip: "Get 2 cantecanti mods.", // Shows when achievement is not completed
+            onComplete() { player.a.achievementpower = player.a.achievementpower.add(0.5) },
+        },
+        112: {
+            name: "Cante-Rich",
+            done() { return player.i.cantecanti.gte("1e35") },
+            tooltip: "Get 1e35 cantecanti.", // Shows when achievement is not completed
+            onComplete() { player.a.achievementpower = player.a.achievementpower.add(0.5) },
+        },
+        113: {
+            name: "Return of the Sacred Path",
+            done() { return player.i.timeshards.gte("100") },
+            tooltip: "Get 100 time shards.", // Shows when achievement is not completed
+            onComplete() { player.a.achievementpower = player.a.achievementpower.add(1) },
+        },
+        114: {
+            name: "Singularity Inflation",
+            done() { return player.i.truesingularitylevel.gte("500") },
+            tooltip: "Reach TS level 500.", // Shows when achievement is not completed
+            onComplete() { player.a.achievementpower = player.a.achievementpower.add(1) },
+        },
         //FUN ACHIEVEMENTS
         1001: {
             name: "Zuck Would Be Proud",
@@ -736,6 +760,18 @@
             tooltip: "Get more than ee9 jacorbian energy whilst having less than eee9 points.", // Shows when achievement is not completed
             onComplete() { player.a.achievementpower = player.a.achievementpower.add(0.5) },
         },
+        1025: {
+            name: "Double Down",
+            done() { return player.i.cantecanti.lt("0.1") && player.a.achievementpower.gte(18) },
+            tooltip: "Have less than 0.1 cantecanti.", // Shows when achievement is not completed
+            onComplete() { player.a.achievementpower = player.a.achievementpower.add(0.5) },
+        },
+        1026: {
+            name: "Intricate Game Design",
+            done() { return player.i.jacorbquest.gt("50") && player.i.aarexquest.lt("20") && player.a.achievementpower.gte(18) },
+            tooltip: "Do 50 jacorb quests but less than 20 aarex quests.", // Shows when achievement is not completed
+            onComplete() { player.a.achievementpower = player.a.achievementpower.add(0.5) },
+        },
         //COMMUNITY
         2001: {
             name: "Once a man, Jacorb was no fool.",
@@ -851,7 +887,7 @@
                     ["row", [["achievement", 64], ["achievement", 65], ["achievement", 66], ["achievement", 67], ["achievement", 68], ["achievement", 69], ["achievement", 71], ["achievement", 72], ["achievement", 73], ["achievement", 74], ["achievement", 75], ["achievement", 76]]],
                     ["row", [["achievement", 77], ["achievement", 78], ["achievement", 79], ["achievement", 81], ["achievement", 82], ["achievement", 83], ["achievement", 84], ["achievement", 85], ["achievement", 86], ["achievement", 87], ["achievement", 88], ["achievement", 89]]],
                     ["row", [["achievement", 91], ["achievement", 92], ["achievement", 93], ["achievement", 94], ["achievement", 95], ["achievement", 96], ["achievement", 97], ["achievement", 98], ["achievement", 99], ["achievement", 101], ["achievement", 102], ["achievement", 103]]],
-                    ["row", [["achievement", 104], ["achievement", 105], ["achievement", 106], ["achievement", 107], ["achievement", 108], ["achievement", 109]]],
+                    ["row", [["achievement", 104], ["achievement", 105], ["achievement", 106], ["achievement", 107], ["achievement", 108], ["achievement", 109], ["achievement", 111], ["achievement", 112], ["achievement", 113], ["achievement", 114]]],
                     ["raw-html", function () { return "<h3>Note: Some achievements are worth more than others</h3>" }],
                 ]
 
@@ -864,6 +900,7 @@
                     ["raw-html", function () { return "<h2>You have " + format(player.a.achievementpower) + " achievement power.</h2>" }],
                     ["row", [["achievement", 1001], ["achievement", 1002], ["achievement", 1003], ["achievement", 1004], ["achievement", 1005], ["achievement", 1006], ["achievement", 1007], ["achievement", 1008], ["achievement", 1009], ["achievement", 1011], ["achievement", 1012]]],
                     ["row", [["achievement", 1013], ["achievement", 1014], ["achievement", 1015], ["achievement", 1016], ["achievement", 1017], ["achievement", 1018], ["achievement", 1019], ["achievement", 1021], ["achievement", 1022], ["achievement", 1023], ["achievement", 1024]]],
+                    ["row", [["achievement", 1013], ["achievement", 1025], ["achievement", 1026]]],
                     ["raw-html", function () { return "<h3>Note: Some of these achievements will be unobtainable, but reobtainable on upcoming layer resets.</h3>" }],
                 ]
 
